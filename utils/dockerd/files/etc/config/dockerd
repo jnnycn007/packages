@@ -20,6 +20,8 @@ config globals 'globals'
 #	list dns '172.17.0.1'
 #	list registry_mirrors 'https://<my-docker-mirror-host>'
 #	list registry_mirrors 'https://hub.docker.com'
+	option buildkit '0'
+	option experimental '0'
 
 # Docker doesn't work well out of the box with fw4. This is because Docker relies on a compatibility layer that
 # naively translates iptables rules. For the best compatibility replace the following dependencies:
@@ -34,5 +36,5 @@ config globals 'globals'
 # then docker restarted to load in new changes.
 config firewall 'firewall'
 	option device 'docker0'
-	list blocked_interfaces 'wan'
+#	list blocked_interfaces 'wan'
 #	option extra_iptables_args '--match conntrack ! --ctstate RELATED,ESTABLISHED' # allow outbound connections
